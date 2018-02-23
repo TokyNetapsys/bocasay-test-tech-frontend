@@ -3,21 +3,25 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
-import { ListItemsComponent } from './list-surveys/list-surveys.component';
+import { ListSurveysComponent } from './list-surveys/list-surveys.component';
 import {SurveyService} from './services/survey.service';
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+import { DetailSurveyComponent } from './detail-survey/detail-survey.component';
+import { AppRoutingModule } from './/app-routing.module';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListItemsComponent
+    ListSurveysComponent,
+    DetailSurveyComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    AppRoutingModule,
   ],
   providers: [
     SurveyService

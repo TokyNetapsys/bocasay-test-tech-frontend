@@ -3,16 +3,16 @@
     <td>Name</td>
     <td>Code</td>
   </tr>
-  <tr *ngFor="let item of items">
-    <td>{{item.name}}</td>
-    <td>{{item.code}}</td>
-    <!--<td><a routerLink="/detail/{{hero.id}}">
-      <span class="badge">{{hero.id}}</span> {{hero.name}}
-    </a></td>-->
+  <tr *ngFor="let survey of surveys">
+    <td>{{survey.name}}</td>
+    <!--<td>{{survey.code}}</td>-->
+    <td><a routerLink="/survey/{{survey.code}}">
+      <span class="badge">{{survey.code}}</span>
+    </a></td>
   </tr>
 </table>
-<!--<li *ngFor="let item of items">
-  <span>code : {{item.code}}</span>
-  <span>name : {{item.name}}</span>
+<!--<li *ngFor="let survey of surveys">
+  <span>code : {{survey.code}}</span>
+  <span>name : {{survey.name}}</span>
 </li>-->
 

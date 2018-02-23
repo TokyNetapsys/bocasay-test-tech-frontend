@@ -7,10 +7,11 @@ import {SurveyService} from '../services/survey.service';
   templateUrl: './list-surveys.component.html',
   styleUrls: ['./list-surveys.component.css']
 })
-export class ListItemsComponent implements OnInit {
-  items: Survey[];
+export class ListSurveysComponent implements OnInit {
+  surveys: Survey[];
+  selectedSurvey: Survey;
 
-  constructor(private itemService: SurveyService) {
+  constructor(private surveyService: SurveyService) {
   }
 
   ngOnInit() {
@@ -18,6 +19,10 @@ export class ListItemsComponent implements OnInit {
   }
 
   getItems(): void {
-    this.itemService.getItems().subscribe(items => this.items = items);
+    this.surveyService.getSurveys().subscribe(items => this.surveys = items);
+  }
+
+  onItemClick(survey: Survey) {
+    this.selectedSurvey = survey;
   }
 }
