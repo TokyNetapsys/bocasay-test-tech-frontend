@@ -16,6 +16,7 @@ export class ListSurveysComponent implements OnInit {
 
   ngOnInit() {
     this.getItems();
+    console.log(this.surveys);
   }
 
   getItems(): void {

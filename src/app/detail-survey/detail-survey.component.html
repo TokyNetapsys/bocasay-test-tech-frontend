@@ -1,3 +1,32 @@
-<p>
-  detail-survey works!
-</p>
+<!--<p>
+  {{currentSurvey.code}} {{currentSurvey.name}}
+</p>-->
+
+
+<div *ngFor="let surveyDetail of surveyDetailList">
+
+  <div *ngIf="surveyDetail.type=='qcm'">
+    <div style="display: block">
+      <canvas baseChart
+              [data]="doughnutChartData"
+              [labels]="doughnutChartLabels"
+              [chartType]="doughnutChartType"
+              (chartHover)="chartHovered($event)"
+              (chartClick)="chartClicked($event)"></canvas>
+    </div>
+  </div>
+</div>
+
+
+<!--<div style="display: block">
+  <canvas baseChart
+          [data]="doughnutChartData"
+          [labels]="doughnutChartLabels"
+          [chartType]="doughnutChartType"
+          (chartHover)="chartHovered($event)"
+          (chartClick)="chartClicked($event)"></canvas>
+</div>-->
+
+
+
+
