@@ -1,11 +1,14 @@
 <div class="card border-secondary mb-3">
   <div class="card-header text-center">This is the list of survey</div>
   <div class="card-body text-dark">
-    <table class="table table-hover">
+    <table class="table table-hover table-sortable">
       <thead class="thead-light">
       <tr>
-        <th scope="col">Name</th>
-        <th scope="col">Code</th>
+        <th scope="col" (click)="sortByName()">Name <i class="fa fa-chevron-up align-items-end"
+                                                       *ngIf="sortNameDirection === 'asc'"></i>
+          <i class="fa fa-chevron-down" *ngIf="sortNameDirection === 'desc'"></i></th>
+        <th scope="col" (click)="sortByCode()">Code <i class="fa fa-chevron-up" *ngIf="sortCodeDirection === 'asc'"></i>
+          <i class="fa fa-chevron-down" *ngIf="sortCodeDirection === 'desc'"></i></th>
       </tr>
       </thead>
       <tbody>

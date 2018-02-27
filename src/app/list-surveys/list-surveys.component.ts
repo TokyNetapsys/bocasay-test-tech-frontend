@@ -10,6 +10,8 @@ import {SurveyService} from '../services/survey.service';
 export class ListSurveysComponent implements OnInit {
   surveys: Survey[];
   selectedSurvey: Survey;
+  sortNameDirection = 'asc';
+  sortCodeDirection = 'asc';
 
   constructor(private surveyService: SurveyService) {
   }
@@ -21,6 +23,35 @@ export class ListSurveysComponent implements OnInit {
 
   getItems(): void {
     this.surveyService.getSurveys().subscribe(items => this.surveys = items);
+  }
+
+  // function used to sort name by name of survey
+  sortByName() {
+    this.sortNameDirection = this.sortNameDirection === 'asc' ? 'desc' : 'asc';
+    const direction = this.sortNameDirection === 'desc' ? 1 : -1;
+    this.surveys.sort((a, b) => {
+      if (a.name < b.name) {
+        return -1 * direction;
+      } else if (a.name > b.name) {
+        return 1 * direction;
+      } else {
+        return 0;
+      }
+    });
+  }
+
+  sortByCode() {
+    this.sortCodeDirection = this.sortCodeDirection === 'asc' ? 'desc' : 'asc';
+    const direction = this.sortCodeDirection === 'desc' ? 1 : -1;
+    this.surveys.sort((a, b) => {
+      if (a.code < b.code) {
+        return -1 * direction;
+      } else if (a.code > b.code) {
+        return 1 * direction;
+      } else {
+        return 0;
+      }
+    });
   }
 
   onItemClick(survey: Survey) {
