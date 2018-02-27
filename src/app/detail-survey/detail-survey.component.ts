@@ -39,17 +39,15 @@ export class DetailSurveyComponent implements OnInit {
       surveyDetailList.forEach(element => {
         // if survey type is qcm we tranform result to array of key value
         if (element.type === 'qcm') {
-          this.doughnutChartData = Object.values(element.result);
-          this.doughnutChartLabels = Object.keys(element.result);
-          console.log(this.doughnutChartData);
-          console.log(this.doughnutChartLabels);
           const temp = new Map();
           for (const key in element.result) {
             temp.set(key, element.result[key]);
           }
           element.result = [...temp.entries()].sort();
           for (const [key, value] of element.result) {
-            console.log('cle:' + key, 'Value : ' + value);
+            this.doughnutChartData.push(value);
+            this.doughnutChartLabels.push(key);
+            // console.log('cle:' + key, 'Value : ' + value);
           }
          console.log(Object.getOwnPropertyNames(element.result));
         }

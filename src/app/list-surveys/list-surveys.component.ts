@@ -40,6 +40,7 @@ export class ListSurveysComponent implements OnInit {
     });
   }
 
+  // function used to sort name by code of survey
   sortByCode() {
     this.sortCodeDirection = this.sortCodeDirection === 'asc' ? 'desc' : 'asc';
     const direction = this.sortCodeDirection === 'desc' ? 1 : -1;
