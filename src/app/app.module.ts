@@ -12,6 +12,7 @@ import {AppRoutingModule} from './/app-routing.module';
 import {ChartsModule} from 'ng2-charts';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { FooterComponent } from './footer/footer.component';
     ListSurveysComponent,
     DetailSurveyComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

@@ -1,68 +1,81 @@
-<!--<p>
-  {{currentSurvey.code}} {{currentSurvey.name}}
-</p>-->
+<p class="h1">
+  Details of survey {{currentSurvey.name}}
+</p>
 
 
-<div *ngFor="let surveyDetail of surveyDetailList">
-  <div *ngIf="surveyDetail.type=='qcm'">
-    <div class="card border-secondary mb-3">
-      <div class="card-header text-center">{{surveyDetail.label}}</div>
-      <div class="card-body text-dark">
-        <!-- <h5 class="card-title">Danger card title</h5>
-         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
-        <div class="row">
-          <div class="col-3">
-            <table class="table">
-              <thead class="thead-light">
-              <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Number</th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr *ngFor="let survey of surveyDetail.result">
-                <td>{{survey[0]}}</td>
-                <!--<td>{{survey.code}}</td>-->
-                <td>{{survey[1]}}</td>
-              </tr>
-              </tbody>
-            </table>
+<div class="row">
+  <div [ngClass]="{'col-md-12': surveyDetail.type == 'qcm', 'col-md-6': surveyDetail.type != 'qcm'}"
+       *ngFor="let surveyDetail of surveyDetailList">
+    <div *ngIf="surveyDetail.type=='qcm'">
+      <div class="card border-secondary mb-3">
+        <div class="card-header text-center">{{surveyDetail.label}}</div>
+        <div class="card-body text-dark">
+          <!-- <h5 class="card-title">Danger card title</h5>
+           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
+          <div class="row">
+            <div class="col-3">
+              <table class="table">
+                <thead class="thead-light">
+                <tr>
+                  <th scope="col">Name</th>
+                  <th scope="col">Number</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let survey of surveyDetail.result">
+                  <td>{{survey[0]}}</td>
+                  <!--<td>{{survey.code}}</td>-->
+                  <td>{{survey[1]}}</td>
+                </tr>
+                </tbody>
+              </table>
 
-          </div>
-          <div class="col-9">
-            <div style="display: block">
-              <canvas baseChart
-                      [data]="doughnutChartData"
-                      [labels]="doughnutChartLabels"
-                      [chartType]="doughnutChartType"
-                      (chartHover)="chartHovered($event)"
-                      (chartClick)="chartClicked($event)"></canvas>
+            </div>
+            <div class="col-9">
+              <div style="display: block">
+                <canvas baseChart
+                        [data]="doughnutChartData"
+                        [labels]="doughnutChartLabels"
+                        [chartType]="doughnutChartType"
+                        ></canvas>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+
+    <div *ngIf="surveyDetail.type=='numeric'">
+      <div class="card border-secondary mb-3">
+        <div class="card-header text-center">{{surveyDetail.label}}</div>
+        <div class="card-body text-dark">
+          <p>{{surveyDetail.result}}</p>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="surveyDetail.type=='date'">
+      <div class="card border-secondary mb-3">
+        <div class="card-header text-center">{{surveyDetail.label}}</div>
+        <div class="card-body text-dark">
+          <table class="table">
+            <thead class="thead-light">
+            <tr>
+              <th scope="col">Date</th>
+              <th scope="col">Hours</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let surveyDate of surveyDetail.result">
+              <td>{{surveyDate | date : "dd/MM/yyyy"}}</td>
+              <!--<td>{{survey.code}}</td>-->
+              <td>{{surveyDate | date : "HH:mm"}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
   </div>
-
-
-  <div *ngIf="surveyDetail.type=='numeric'">
-    <p>{{surveyDetail.result}}</p>
-  </div>
-  <div *ngIf="surveyDetail.type=='date'">
-    <table>
-      <tr>
-        <td>Date</td>
-        <td>Hours</td>
-      </tr>
-      <tr *ngFor="let surveyDate of surveyDetail.result">
-        <td>{{surveyDate | date : "dd/MM/yyyy"}}</td>
-        <!--<td>{{survey.code}}</td>-->
-        <td>{{surveyDate | date : "HH:mm"}}</td>
-      </tr>
-    </table>
-  </div>
-
-
 </div>
 
 

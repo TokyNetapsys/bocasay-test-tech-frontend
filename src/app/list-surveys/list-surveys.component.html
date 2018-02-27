@@ -1,16 +1,35 @@
-<table>
+<div class="card border-secondary mb-3">
+  <div class="card-header text-center">This is the list of survey</div>
+  <div class="card-body text-dark">
+    <table class="table table-hover">
+      <thead class="thead-light">
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Code</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let survey of surveys">
+        <td routerLink="/survey/{{survey.code}}">{{survey.name}}</td>
+        <td routerLink="/survey/{{survey.code}}">{{survey.code}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<!--<table>
   <tr>
     <td>Name</td>
     <td>Code</td>
   </tr>
   <tr *ngFor="let survey of surveys">
     <td>{{survey.name}}</td>
-    <!--<td>{{survey.code}}</td>-->
+    &lt;!&ndash;<td>{{survey.code}}</td>&ndash;&gt;
     <td><a routerLink="/survey/{{survey.code}}">
       <span class="badge">{{survey.code}}</span>
     </a></td>
   </tr>
-</table>
+</table>-->
 <!--<li *ngFor="let survey of surveys">
   <span>code : {{survey.code}}</span>
   <span>name : {{survey.name}}</span>

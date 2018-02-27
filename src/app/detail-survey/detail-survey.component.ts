@@ -18,15 +18,6 @@ export class DetailSurveyComponent implements OnInit {
   public doughnutChartData: any[] = [];
   public doughnutChartType = 'doughnut';
 
-  // events
-  public chartClicked(e: any): void {
-    console.log(e);
-  }
-
-  public chartHovered(e: any): void {
-    console.log(e);
-  }
-
   constructor(private route: ActivatedRoute,
               private surveyService: SurveyService,
               private location: Location) {
