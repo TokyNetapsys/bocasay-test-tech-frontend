@@ -14,9 +14,9 @@ export class DetailSurveyComponent implements OnInit {
 
   surveyDetailList: SurveyDetail[];
   currentSurvey: Survey;
-  public doughnutChartLabels: string[] = [];
-  public doughnutChartData: any[] = [];
-  public chartType = 'doughnut';
+  doughnutChartLabels: string[] = [];
+  doughnutChartData: any[] = [];
+  chartType = 'doughnut';
   sortQCMNumberDirection = 'asc';
   sortQCMNameDirection = 'asc';
   sortDateDirection = 'asc';
