@@ -1,6 +1,8 @@
-<p class="h1">
-  Details of survey {{currentSurvey.name}}
-</p>
+<div *ngIf="currentSurvey">
+  <p class="h1">
+    Details of survey {{currentSurvey.name}}
+  </p>
+</div>
 
 
 <div class="row">
@@ -17,8 +19,14 @@
               <table class="table">
                 <thead class="thead-light">
                 <tr>
-                  <th scope="col">Name</th>
-                  <th scope="col">Number</th>
+                  <th scope="col" (click)="sortQCM(surveyDetail.result, 'name')">Name <i
+                    class="fa fa-chevron-up align-items-end"
+                    *ngIf="sortQCMNameDirection === 'asc'"></i>
+                    <i class="fa fa-chevron-down" *ngIf="sortQCMNameDirection === 'desc'"></i></th>
+                  <th scope="col" (click)="sortQCM(surveyDetail.result, 'number')">Number <i
+                    class="fa fa-chevron-up align-items-end"
+                    *ngIf="sortQCMNumberDirection === 'asc'"></i>
+                    <i class="fa fa-chevron-down" *ngIf="sortQCMNumberDirection === 'desc'"></i></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -37,7 +45,7 @@
                         [data]="doughnutChartData"
                         [labels]="doughnutChartLabels"
                         [chartType]="doughnutChartType"
-                        ></canvas>
+                ></canvas>
               </div>
             </div>
           </div>
@@ -60,8 +68,12 @@
           <table class="table">
             <thead class="thead-light">
             <tr>
-              <th scope="col">Date</th>
-              <th scope="col">Hours</th>
+              <th scope="col" (click)="sortDate(surveyDetail.result, 'date')">Date <i class="fa fa-chevron-up"
+                                                                                      *ngIf="sortDateDirection === 'asc'"></i>
+                <i class="fa fa-chevron-down" *ngIf="sortDateDirection === 'desc'"></i></th>
+              <th scope="col" (click)="sortDate(surveyDetail.result, 'hours')">Hours <i class="fa fa-chevron-up"
+                                                                                        *ngIf="sortHoursDirection === 'asc'"></i>
+                <i class="fa fa-chevron-down" *ngIf="sortHoursDirection === 'desc'"></i></th>
             </tr>
             </thead>
             <tbody>

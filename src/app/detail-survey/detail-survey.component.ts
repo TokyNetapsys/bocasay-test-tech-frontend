@@ -17,17 +17,18 @@ export class DetailSurveyComponent implements OnInit {
   public doughnutChartLabels: string[] = [];
   public doughnutChartData: any[] = [];
   public doughnutChartType = 'doughnut';
+  sortQCMNumberDirection = 'asc';
+  sortQCMNameDirection = 'asc';
+  sortDateDirection = 'asc';
+  sortHoursDirection = 'asc';
 
   constructor(private route: ActivatedRoute,
               private surveyService: SurveyService,
               private location: Location) {
-    this.route.params.subscribe(params => console.log(params));
-    console.log(this.route.snapshot.paramMap.get('code'));
   }
 
   ngOnInit() {
     this.getSurvey();
-    console.log(this.surveyDetailList);
   }
 
   getSurvey(): void {
@@ -47,22 +48,71 @@ export class DetailSurveyComponent implements OnInit {
           for (const [key, value] of element.result) {
             this.doughnutChartData.push(value);
             this.doughnutChartLabels.push(key);
-            // console.log('cle:' + key, 'Value : ' + value);
           }
-         console.log(Object.getOwnPropertyNames(element.result));
         }
-        // if survey type is date we tranform result to array of date
-       /* if (element.type === 'date') {
-          console.log(element.result);
-          const listDate = new Array();
-          for (const item of element.result) {
-            listDate.push(new Date(item));
-          }
-          element.result = listDate;
-        }*/
       });
       this.surveyDetailList = surveyDetailList;
-      console.log(this.surveyDetailList);
     });
+  }
+
+  /**
+   * function used to sort list of QCM result
+   * @param {Array<any>} list
+   * @param {string} column
+   */
+  sortQCM(list: Array<any>, column: string) {
+    if (column === 'name') {
+      this.sortQCMNameDirection = this.sortQCMNameDirection === 'asc' ? 'desc' : 'asc';
+      const direction = this.sortQCMNameDirection === 'desc' ? 1 : -1;
+      list.sort((a, b) => {
+        if (a[0] < b[0]) {
+          return -1 * direction;
+        } else if (a[0] > b[0]) {
+          return 1 * direction;
+        } else {
+          return 0;
+        }
+      });
+    } else {
+      this.sortQCMNumberDirection = this.sortQCMNumberDirection === 'asc' ? 'desc' : 'asc';
+      const direction = this.sortQCMNumberDirection === 'desc' ? 1 : -1;
+      list.sort((a, b) => {
+        if (a[1] < b[1]) {
+          return -1 * direction;
+        } else if (a[1] > b[1]) {
+          return 1 * direction;
+        } else {
+          return 0;
+        }
+      });
+    }
+  }
+
+  sortDate(list: Array<any>, column: string) {
+    if (column === 'date') {
+      this.sortDateDirection = this.sortDateDirection === 'asc' ? 'desc' : 'asc';
+      const direction = this.sortDateDirection === 'desc' ? 1 : -1;
+      list.sort((a, b) => {
+        if (new Date(a).getTime() < new Date(b).getTime()) {
+          return -1 * direction;
+        } else if (new Date(a).getTime() > new Date(b).getTime()) {
+          return 1 * direction;
+        } else {
+          return 0;
+        }
+      });
+    } else {
+      this.sortHoursDirection = this.sortHoursDirection === 'asc' ? 'desc' : 'asc';
+      const direction = this.sortHoursDirection === 'desc' ? 1 : -1;
+      list.sort((a, b) => {
+        if (new Date(a).getHours() < new Date(b).getHours()) {
+          return -1 * direction;
+        } else if (new Date(a).getHours() > new Date(b).getHours()) {
+          return 1 * direction;
+        } else {
+          return 0;
+        }
+      });
+    }
   }
 }
