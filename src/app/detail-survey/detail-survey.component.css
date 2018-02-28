@@ -1,6 +1,21 @@
-table{
+table {
   width: 100%;
 }
-.fa{
+
+.fa {
   float: right;
+}
+
+.fa-arrow-circle-left {
+  float: left;
+  cursor: pointer;
+}
+
+.fa-arrow-circle-right {
+  float: right;
+  cursor: pointer;
+}
+
+.text-align-center {
+  text-align: center;
 }

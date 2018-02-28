@@ -16,11 +16,13 @@ export class DetailSurveyComponent implements OnInit {
   currentSurvey: Survey;
   public doughnutChartLabels: string[] = [];
   public doughnutChartData: any[] = [];
-  public doughnutChartType = 'doughnut';
+  public chartType = 'doughnut';
   sortQCMNumberDirection = 'asc';
   sortQCMNameDirection = 'asc';
   sortDateDirection = 'asc';
   sortHoursDirection = 'asc';
+  indexOfChart = 0;
+  chartList = ['doughnut', 'polarArea', 'pie'];
 
   constructor(private route: ActivatedRoute,
               private surveyService: SurveyService,
@@ -88,6 +90,11 @@ export class DetailSurveyComponent implements OnInit {
     }
   }
 
+  /**
+   * function used to sort date or time in date survey
+   * @param {Array<any>} list
+   * @param {string} column
+   */
   sortDate(list: Array<any>, column: string) {
     if (column === 'date') {
       this.sortDateDirection = this.sortDateDirection === 'asc' ? 'desc' : 'asc';
@@ -114,5 +121,24 @@ export class DetailSurveyComponent implements OnInit {
         }
       });
     }
+  }
+
+  /**
+   * loaf next graph
+   */
+  nextGraph() {
+    this.indexOfChart++;
+    this.chartType = this.chartList[this.indexOfChart % 3];
+  }
+
+  /**
+   * load previous graph
+   */
+  previousGraph() {
+    this.indexOfChart--;
+    if (this.indexOfChart < 0) {
+      this.indexOfChart = 2;
+    }
+    this.chartType = this.chartList[this.indexOfChart % 3];
   }
 }

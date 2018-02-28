@@ -37,12 +37,22 @@
 
             </div>
             <div class="col-9">
+              <div class="row">
+                <div class="col-2">
+                  <i class="fa fa-arrow-circle-left" (click)="previousGraph()"></i>
+                </div>
+                <div class="col-8">
+                  <p class="h2 text-align-center">{{chartType}}</p>
+                </div>
+                <div class="col-2">
+                  <i class="fa fa-arrow-circle-right" (click)="nextGraph()"></i>
+                </div>
+              </div>
               <div style="display: block">
                 <canvas baseChart
                         [data]="doughnutChartData"
                         [labels]="doughnutChartLabels"
-                        [chartType]="doughnutChartType"
-                ></canvas>
+                        [chartType]="chartType"></canvas>
               </div>
             </div>
           </div>
