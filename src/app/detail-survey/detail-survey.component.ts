@@ -52,14 +52,14 @@ export class DetailSurveyComponent implements OnInit {
          console.log(Object.getOwnPropertyNames(element.result));
         }
         // if survey type is date we tranform result to array of date
-        if (element.type === 'date') {
+       /* if (element.type === 'date') {
           console.log(element.result);
           const listDate = new Array();
           for (const item of element.result) {
             listDate.push(new Date(item));
           }
           element.result = listDate;
-        }
+        }*/
       });
       this.surveyDetailList = surveyDetailList;
       console.log(this.surveyDetailList);
