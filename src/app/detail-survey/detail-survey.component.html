@@ -12,8 +12,6 @@
       <div class="card border-secondary mb-3">
         <div class="card-header text-center">{{surveyDetail.label}}</div>
         <div class="card-body text-dark">
-          <!-- <h5 class="card-title">Danger card title</h5>
-           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
           <div class="row">
             <div class="col-3">
               <table class="table">
@@ -32,7 +30,6 @@
                 <tbody>
                 <tr *ngFor="let survey of surveyDetail.result">
                   <td>{{survey[0]}}</td>
-                  <!--<td>{{survey.code}}</td>-->
                   <td>{{survey[1]}}</td>
                 </tr>
                 </tbody>
